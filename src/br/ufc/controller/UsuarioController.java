@@ -51,28 +51,67 @@ public class UsuarioController {
 		return "usuario/cadastrar_jornalista_form";
 	}
 	
-	@RequestMapping("/cadastrarClassificadoFormulario")
-	public String cadastrarClassificadoFormulario(){
-		return "usuario/cadastrar_classificado_form";
+	@RequestMapping("/cadastrarEditorFormulario")
+	public String cadastrarEditorFormulario(){
+		return "usuario/cadastrar_editor_form";
 	}
 	
-	@RequestMapping("/cadastrarSecaoFormulario")
-	public String cadastrarSecaoFormulario() {
-		return "usuario/cadastrar_secao_form";
+	//Cadastrar Usuario Editor
+	@RequestMapping("/cadastrarEditor")
+	public String cadastrarEditor(Usuario usuario){
+		List<Papel> papels = papelDAO.listar();
+		Papel papel = new Papel();
+		Papel papelLeitor = new Papel();
+		List<Papel> papeisJornalista = new ArrayList<Papel>();
+		
+		for (Papel p : papels) {
+			if(p.getNomePalpel().equals("Editor"))
+			{
+				papel = p;
+			}
+		}
+		papeisJornalista.add(papel);
+		usuario.setPapel(papeisJornalista);
+		usuario.setSenha(Criptografia.criptografar(usuario.getSenha()));
+		usuario.setNomePapel("Editor");
+		usuDAO.inserir(usuario);
+		
+		return "usuario/area_editor";
 	}
+	
+	//Cadastrar Usuario Jornalista
 	@RequestMapping("/cadastrarJornalista")
-	public String cadastrarJornalista(){
-		return "";
+	public String cadastrarJornalista(Usuario usuario, String teste){
+		List<Papel> papels = papelDAO.listar();
+		Papel papel = new Papel();
+		Papel papelLeitor = new Papel();
+		List<Papel> papeisJornalista = new ArrayList<Papel>();
+		
+		if(teste != null)
+		{
+			for (Papel p : papels) {
+				if(p.getNomePalpel().equals("Leitor"))
+				{
+					papelLeitor = p;
+				}
+			}
+			papeisJornalista.add(papelLeitor);
+		}
+		for (Papel p : papels) {
+			if(p.getNomePalpel().equals("Jornalista"))
+			{
+				papel = p;
+			}
+		}
+		papeisJornalista.add(papel);
+		usuario.setPapel(papeisJornalista);
+		usuario.setSenha(Criptografia.criptografar(usuario.getSenha()));
+		usuario.setNomePapel("Jornalista");
+		usuDAO.inserir(usuario);
+		
+		return "usuario/area_editor";
 	}
-	@RequestMapping("/cadastrarClassificado")
-	public String cadastrarClassificado(){
-		return "usuario/cadastrar_classificado_form";
-	}
-	
-	@RequestMapping("/cadastrarSecao")
-	public String cadastrarSecao() {
-		return "usuario/cadastrar_secao_form";
-	}
+
 	//Cadastrar Usuario Leitor
 	@RequestMapping("/cadastrarUsuario")
 	public String cadastrarUsuario(Usuario usuario,Model model)
@@ -119,7 +158,6 @@ public class UsuarioController {
 	
 	@RequestMapping("/areaDoEditor")
 	public String areaDoEditor(String id){
-		System.out.println("Tipo de Id"+id);
 		if(id.equals("Editor")){
 			return "usuario/area_editor";
 		}

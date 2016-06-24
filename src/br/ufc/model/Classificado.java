@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 
 @Entity(name = "classificado")
@@ -19,16 +20,24 @@ public class Classificado {
 	@Column(nullable=false)
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
+	@NotNull
 	private String titulo;
+	@NotNull
 	private String texto;
+	@NotNull
 	private Float preco;
+	@NotNull
 	private String telefone;
+	@NotNull
 	private Float melhorOferta;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dataOferta;
 	
-	@ManyToOne
-	@JoinColumn(name="usuario", referencedColumnName = "idUsuario", updatable = false, insertable = false)
+	@Column(name="usuario", insertable=false, updatable=false, nullable=false)
+	private Long idUsuario;
+	
+	@ManyToOne (optional=false)
+	@JoinColumn(name="usuario", referencedColumnName = "idUsuario")
 	private Usuario usuario;
 
 	public Long getId() {
@@ -93,6 +102,14 @@ public class Classificado {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public Long getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(Long idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 	
 	

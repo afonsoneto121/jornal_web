@@ -4,15 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Cadastrar Jornalista</title>
+<title>Insert title here</title>
 </head>
 <body>
-<form action="cadastrarJornalista" method="post">
+<form action="cadastrarEditor" method="post">
 	Nome: <input  type="text" name="nome" required="required"/><br/>
 	Email: <input type="email" name="email" placeholder="teste@teste.com" required="required"/><br/>
 	Login: <input type="text" name="login" required="required"/><br/>
 	Senha: <input type="password" name="senha" required="required"/><br/>
-	<input type="checkbox" name="teste" value="Leitor">
 			
     <input type="submit" value="Enviar" />
 </form>

@@ -7,15 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	Area do Editor
-	<a href="cadastrarEditorFormulario"> Cadastrar editor</a>
-	<a href="cadastrarJornalistaFormulario"> Cadastrar jornalista</a>
-	<a href="cadastrarClassificadoFormulario"> Cadastrar classificado</a>
-	<a href="cadastrarSecaoFormulario">	Cadastrar seção</a>
-	<a href="listarNoticiaFormuario">	Apagar Noticia</a>
-	
-	
-	
-	
+
 </body>
 </html>

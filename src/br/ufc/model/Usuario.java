@@ -128,5 +128,13 @@ public class Usuario {
 	public void setClassificados(List<Classificado> classificados) {
 		this.classificados = classificados;
 	}
-	
+	public boolean equals(Object obj){
+		if(!(obj instanceof Usuario))
+			return false;
+		
+		Usuario ref = (Usuario) obj;
+		if(ref.getIdUsuario() == this.idUsuario)
+			return true;
+		return false;
+	}
 }

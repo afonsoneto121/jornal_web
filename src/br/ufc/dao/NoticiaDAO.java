@@ -47,16 +47,12 @@ public class NoticiaDAO implements NoticiaI{
 	}
 
 	@Override
-	public Noticia recuperar(String titulo) {
+	public List<Noticia> recuperar(String titulo) {
 		List<Noticia> notcList;
-		String hql = "select u from noticia as u where u.titulo = :titulo";
+		String hql = "select u from noticia as u where u.titulo like :titulo";
 		Query qr = manage.createQuery(hql);
 		notcList = qr.setParameter("titulo", titulo).getResultList();
-		if(notcList.size() != 0)
-		{
-			return notcList.get(0);
-		}
-		return null;
+		return notcList;
 	}
 
 	@Override

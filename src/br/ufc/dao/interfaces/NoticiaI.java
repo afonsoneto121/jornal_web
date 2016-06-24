@@ -12,7 +12,7 @@ public interface NoticiaI {
 	//Recuperar Noticia pelo ID
 	public Noticia recuperar(Long id);
 	//Recuperar Noticia pelo Titulo
-	public Noticia recuperar(String titulo);
+	public List<Noticia> recuperar(String titulo);
 	//Recuperar as ultimas noticias cadastradas
 	public List<Noticia> recuperarUltimas();
 }
