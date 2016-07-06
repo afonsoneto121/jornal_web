@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Area do Jornalista</title>
 </head>
 <body>
-	Area do Jornalista
+	<a href="cadastrarNoticiaFormulario">Cadastrar noticia</a>
+	<a href="listarNoticiaJornalista?id=${usuario_logado.login}">Apagar Noticia</a>
+ 
 </body>
 </html>
