@@ -32,6 +32,10 @@ public class Classificado {
 	private Float melhorOferta;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dataOferta;
+		
+	private Long idAutoMO;
+	
+	private int vendido;
 	
 	@Column(name="usuario", insertable=false, updatable=false, nullable=false)
 	private Long idUsuario;
@@ -110,6 +114,22 @@ public class Classificado {
 
 	public void setIdUsuario(Long idUsuario) {
 		this.idUsuario = idUsuario;
+	}
+
+	public Long getIdAutoMO() {
+		return idAutoMO;
+	}
+
+	public void setIdAutoMO(Long idAutoMO) {
+		this.idAutoMO = idAutoMO;
+	}
+
+	public int getVendido() {
+		return vendido;
+	}
+
+	public void setVendido(int vendido) {
+		this.vendido = vendido;
 	}
 	
 	

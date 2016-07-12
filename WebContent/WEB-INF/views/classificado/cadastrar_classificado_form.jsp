@@ -7,6 +7,7 @@
 <title>Cadastro de Classificado</title>
 </head>
 <body>
+<a href="paginaPrincipal"> Pagina Principal</a> <br />
 <form action="cadastrarClassificado" method="post">
 	Titulo: <input  type="text" name="titulo" required="required"/><br/>
 	Texto: <br />

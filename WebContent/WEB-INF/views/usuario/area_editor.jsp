@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+<a href="paginaPrincipal"> Pagina Principal</a> <br />
 	Area do Editor
 	<a href="cadastrarEditorFormulario"> Cadastrar editor</a>
 	<a href="cadastrarJornalistaFormulario"> Cadastrar jornalista</a>

@@ -9,6 +9,9 @@
 <title>Noticias</title>
 </head>
 <body>
+<a href="paginaPrincipal"> Pagina Principal</a> <br />
+	<a href="paginaPrincipal"> Pagina Principal</a> <br />
+
 	<form action="listaNoticiaTitulo" method="post">
 		Titulo: <input type="text" name="titulo"/>
 		<input type="submit" values="ENVIAR"/>

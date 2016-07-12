@@ -6,24 +6,29 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Apagar Noticia</title>
+<title>Noticias Por Seção</title>
 </head>
 <body>
+<a href="paginaPrincipal"> Pagina Principal</a> <br />
 <table border="1">
 	<c:forEach var="n" items="${secoes}">
 	<td>
 		<h2> <a href="listarNoticiasSecao?id=${n.idSecao}"> ${n.titulo}</a> </h2> 
 	</td>
 	</c:forEach>
-</table>
-	<br /> <br />
-<table border="1">
+	<br />
+	Seção Atual: ${secao.titulo}
+	<br />
+	<table border="1">
 	<c:forEach var="n" items="${noticias}">
 	<tr>
-		<td>  ${n.titulo} </td>
-		<td>  <a href="apagarNoticia?id=${n.idNoticia}">Excluir</a>  </td> 
+		<td> ${n.titulo} </td>
+		<td> ${n.subTitulo} </td>
+		<td> <a href="direcionarNoticia?id=${n.idNoticia}"> Ver</a> </td>
 	</tr>
 	</c:forEach>
+</table>
+	
 </table>
 </body>
 </html>

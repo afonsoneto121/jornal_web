@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<a href="paginaPrincipal"> Pagina Principal</a> <br />
 <form action="cadastrarEditor" method="post">
 	Nome: <input  type="text" name="nome" required="required"/><br/>
 	Email: <input type="email" name="email" placeholder="teste@teste.com" required="required"/><br/>

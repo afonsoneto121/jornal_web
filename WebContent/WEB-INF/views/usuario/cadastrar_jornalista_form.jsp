@@ -7,6 +7,7 @@
 <title>Cadastrar Jornalista</title>
 </head>
 <body>
+<a href="paginaPrincipal"> Pagina Principal</a> <br />
 <form action="cadastrarJornalista" method="post">
 	Nome: <input  type="text" name="nome" required="required"/><br/>
 	Email: <input type="email" name="email" placeholder="teste@teste.com" required="required"/><br/>

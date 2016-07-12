@@ -23,7 +23,7 @@ public class Noticia {
 	private String titulo;
 	private String subTitulo;
 	private String texto;
-	private Calendar dataNoticia;	
+	private Calendar dataNoticia;
 	
 	@ManyToOne
 	@JoinColumn(name = "usuario", referencedColumnName = "idUsuario")

@@ -7,6 +7,7 @@
 <title>Cadastro de Seção</title>
 </head>
 <body>
+<a href="paginaPrincipal"> Pagina Principal</a> <br />
 <h2>Inserir Seção</h2>
 <form action="cadastrarSecao" method="post">
 	Título da seção: <input  type="text" name="titulo" required="required"/><br/>

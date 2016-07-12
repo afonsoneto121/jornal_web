@@ -12,9 +12,11 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import br.ufc.dao.interfaces.ComentarioI;
 import br.ufc.dao.interfaces.NoticiaI;
 import br.ufc.dao.interfaces.SecaoI;
 import br.ufc.dao.interfaces.UsuarioI;
+import br.ufc.model.Comentario;
 import br.ufc.model.Noticia;
 import br.ufc.model.Secao;
 import br.ufc.model.Usuario;
@@ -35,6 +37,10 @@ public class NoticiaController {
 	@Qualifier(value ="secaoDAO")
 	SecaoI secDAO;
 	
+	@Autowired
+	@Qualifier(value ="comentarioDAO")
+	ComentarioI comDAO;
+	
 	@RequestMapping("/listarNoticiaFormuario")
 	public String listarNoticiaFormuario(){
 		return "noticia/noticias_editor";
@@ -51,7 +57,7 @@ public class NoticiaController {
 	public String apagarNoticia(Long id){
 		Noticia noticia = notiDAO.recuperar(id);
 		notiDAO.remover(noticia);
-		return "usuario/area_editor";
+		return "redirect:paginaPrincipal";
 	}
 	
 	@RequestMapping("/verNoticia")
@@ -85,6 +91,8 @@ public class NoticiaController {
 		Usuario usu = usuDAO.recuperar(id);
 		List<Noticia> todas = notiDAO.listar();
 		List<Noticia> noticiaJornalista = new ArrayList<Noticia>();
+		List<Secao> secaos = secDAO.listar();
+		model.addAttribute("secoes", secaos);
 		for (Noticia noticia : todas) {
 			if(usu.getLogin().equals( (noticia.getUsuario()).getLogin()) ){
 				noticiaJornalista.add(noticia);
@@ -93,5 +101,23 @@ public class NoticiaController {
 		}
 		model.addAttribute("noticias", noticiaJornalista);
 		return "usuario/noticia_jornalista";
+	}
+	
+	@RequestMapping("/direcionarNoticia")
+	public String direcionarNoticia(Model model,Long id){
+		//Long idBanco = Long.parseLong(id);
+		Noticia noticia = notiDAO.recuperar(id);
+		List<Comentario> comentarios = comDAO.listar();
+		List<Comentario> comentarioNoticia = new ArrayList<>();
+		for (Comentario comentario : comentarios) {
+			if(comentario.getNoticia().getIdNoticia() == noticia.getIdNoticia()) {
+				comentarioNoticia.add(comentario);
+			}
+		}
+		model.addAttribute("noticia", noticia);
+		model.addAttribute("comentario", comentarioNoticia);
+		List<Secao> secoes = secDAO.listar();
+		model.addAttribute("secoes", secoes);
+		return "noticia/ver_noticia";
 	}
 }

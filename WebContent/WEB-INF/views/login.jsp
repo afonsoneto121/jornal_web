@@ -11,7 +11,7 @@
 	<h2>Efetuar Login</h2>
 	<form action="login" method="post">
 		Login: <input type="text" value="${usuario_login.login}" name="login"  /> <br />
-		Senha: <input type="text" name="senha" /> <br />
+		Senha: <input type="password" name="senha" /> <br />
 		Papel: <select name="nomePapel">
 					<option>Leitor</option>
 					<option>Jornalista</option>

@@ -36,12 +36,12 @@ public class FiltroTempoDeExecucao implements Filter{
 		{
 			chain.doFilter(request, response);
 		}
-		/*
 		
-		else if(uri.endsWith("listarNoticias") || uri.endsWith("lerNoticia"))
+		else if( uri.endsWith("direcionarNoticia") || uri.endsWith("listarNoticiasSecao"))
 		{
 			chain.doFilter(request, response);
 		}
+		/*
 		else if(uri.endsWith("listarSecoes") || uri.endsWith("noticiaSecao"))
 		{
 			chain.doFilter(request, response);

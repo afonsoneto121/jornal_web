@@ -8,12 +8,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Noticia</title>
 </head>
+
 <body>
+<a href="paginaPrincipal"> Pagina Principal</a> <br />
 	<form action="cadastrarNoticia" method="post">
 	Titulo: <input  type="text" name="titulo" required="required"/><br/>
 	Sub Titulo: <input type="text" name="subTitulo" required="required"/><br/>
 	Texto:
-		<textarea name="texto" rows="70" cols="100 "></textarea> <br />
+		<textarea name="texto" rows="50" cols="100 "></textarea> <br />
 	
 	Seção: 
 	<select name="secaoTitulo">

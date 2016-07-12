@@ -6,24 +6,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Apagar Noticia</title>
+<title>Meus Lances</title>
 </head>
 <body>
+<a href="paginaPrincipal"> Pagina Principal</a> <br />
 <table border="1">
-	<c:forEach var="n" items="${secoes}">
-	<td>
-		<h2> <a href="listarNoticiasSecao?id=${n.idSecao}"> ${n.titulo}</a> </h2> 
-	</td>
-	</c:forEach>
-</table>
-	<br /> <br />
-<table border="1">
-	<c:forEach var="n" items="${noticias}">
+	<c:forEach var="n" items="${classiicados}">
 	<tr>
-		<td>  ${n.titulo} </td>
-		<td>  <a href="apagarNoticia?id=${n.idNoticia}">Excluir</a>  </td> 
+		<td> ${n.titulo} </td>
+		<td> ${n.preco} </td>
+		<td> <a href="confirmarComprar?id=${n.id}"> Confirmar Comprar</a> </td>
 	</tr>
 	</c:forEach>
 </table>
+
 </body>
 </html>
