@@ -37,20 +37,17 @@ public class FiltroTempoDeExecucao implements Filter{
 			chain.doFilter(request, response);
 		}
 		
-		else if( uri.endsWith("direcionarNoticia") || uri.endsWith("listarNoticiasSecao"))
+		else if( uri.endsWith("direcionarNoticia") || uri.endsWith("listarNoticiasSecao") 
+				|| uri.endsWith("listarClassificados")|| uri.endsWith("recuperarSenha"))
 		{
 			chain.doFilter(request, response);
 		}
-		/*
-		else if(uri.endsWith("listarSecoes") || uri.endsWith("noticiaSecao"))
+		
+		else if(uri.endsWith("enviarEmail") || uri.endsWith("informacaoAutor")|| uri.contains("resources/"))
 		{
 			chain.doFilter(request, response);
 		}
-		else if(uri.endsWith("listarClassificados") || uri.endsWith("inserirOfertaForm"))
-		{
-			chain.doFilter(request, response);
-		}
-		*/
+		
 		else {
 			((HttpServletResponse) response).sendRedirect("paginaPrincipal");
 		}

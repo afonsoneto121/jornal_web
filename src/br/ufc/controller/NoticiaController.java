@@ -5,13 +5,18 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import br.ufc.Util.JornalFileUtil;
 import br.ufc.dao.interfaces.ComentarioI;
 import br.ufc.dao.interfaces.NoticiaI;
 import br.ufc.dao.interfaces.SecaoI;
@@ -41,6 +46,9 @@ public class NoticiaController {
 	@Qualifier(value ="comentarioDAO")
 	ComentarioI comDAO;
 	
+	@Autowired
+	private ServletContext servletContext;
+	
 	@RequestMapping("/listarNoticiaFormuario")
 	public String listarNoticiaFormuario(){
 		return "noticia/noticias_editor";
@@ -57,6 +65,9 @@ public class NoticiaController {
 	public String apagarNoticia(Long id){
 		Noticia noticia = notiDAO.recuperar(id);
 		notiDAO.remover(noticia);
+		String path = servletContext.getRealPath("/")+"WEB-INF/resources/images/" + noticia.getIdNoticia() + ".png";
+		
+		JornalFileUtil.removerArquivos(path);
 		return "redirect:paginaPrincipal";
 	}
 	
@@ -75,7 +86,9 @@ public class NoticiaController {
 	}
 
 	@RequestMapping("/cadastrarNoticia")
-	public String cadastrarNoticia(Noticia noticia, String secaoTitulo, String login){
+	public String cadastrarNoticia(Noticia noticia, String secaoTitulo, String login,
+			@RequestParam(value="imagem", required=false) MultipartFile imagem){
+		
 		Secao secao = secDAO.recuperar(secaoTitulo);
 		Usuario usuario = usuDAO.recuperar(login);
 		Calendar calendar = Calendar.getInstance();
@@ -84,6 +97,15 @@ public class NoticiaController {
 		noticia.setSecao(secao);
 		noticia.setUsuario(usuario);
 		notiDAO.inserir(noticia);
+		List<Noticia> list = notiDAO.listar();
+		Long size = 0l;
+		for (Noticia noticia2 : list) {
+			size = noticia2.getIdNoticia();
+		}
+		
+		String path = servletContext.getRealPath("/")+"WEB-INF/resources/images/" + size + ".png";
+		
+		JornalFileUtil.salvarImagem(path, imagem);
 		return "usuario/area_jornalista";
 	}
 	@RequestMapping("/listarNoticiaJornalista")

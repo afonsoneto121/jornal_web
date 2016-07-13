@@ -2,10 +2,11 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" xml:lang="pt-br">
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <title>Noticia</title>
 </head>
 <body>
@@ -13,13 +14,15 @@
 <table border="1">
 	<c:forEach var="n" items="${secoes}">
 	<td>
-		<h2> ${n.titulo} </h2> 
+		<h2> <a href="listarNoticiasSecao?id=${n.idSecao}"> ${n.titulo}</a> </h2> 
 	</td>
 	</c:forEach>
 </table>
+	<br /> <br />
+	<h5><a href="informacaoAutor?id=${noticia.usuario.idUsuario}"> Autor:${noticia.usuario.nome} </a> </h5> <br />
 	<h1>${noticia.titulo}</h1> <br />
 	<h3>${noticia.subTitulo}</h3> <br />
-	
+	<img alt="${noticia.titulo}"  src=" <c:url value="/resources/images/${noticia.idNoticia}.png " /> " /> <br />
 	${noticia.texto} <br />
 	<br /><br />
 	<table border="1">

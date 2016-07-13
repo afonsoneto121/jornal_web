@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.Cascade;
+
 @Entity(name = "noticia")
 public class Noticia {
 	@Id
@@ -34,7 +36,7 @@ public class Noticia {
 	private Secao secao;
 	
 	@OneToMany(mappedBy = "noticia", cascade = CascadeType.ALL,
-			targetEntity=Comentario.class, fetch = FetchType.EAGER)
+			targetEntity=Comentario.class, fetch=FetchType.LAZY)
 	List<Comentario> comentarios;
 
 	public Long getIdNoticia() {

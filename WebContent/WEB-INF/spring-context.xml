@@ -23,6 +23,12 @@ http://www.springframework.org/schema/tx/spring-tx.xsd">
 		<bean class="br.ufc.interceptor.InterceptadorGeral"/>
 	</mvc:interceptors>
  -->
+	<mvc:resources mapping="/resources/**" location="/WEB-INF/resources/" />
+	
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="1000000" />
+	</bean>
 	
 	<bean id="usuarioDAO" class="br.ufc.dao.UsuarioDAO"/>
 	<bean id="secaoDAO" class="br.ufc.dao.SecaoDAO"/>
@@ -64,4 +70,28 @@ http://www.springframework.org/schema/tx/spring-tx.xsd">
 	</bean>
 	<tx:annotation-driven />
 
+	<!-- gerenciamento de de serviço de email -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="smtp.gmail.com" />
+        <property name="port" value="587" />
+        <property name="username" value="afonsoneto121@gmail.com" />
+        <property name="password" value="deixaprala26041996" />
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.transport.protocol">smtp</prop>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+            </props>
+        </property>
+    </bean>
+    <!-- 
+    <bean
+        class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="java.lang.Exception">error</prop>
+            </props>
+        </property>
+    </bean> 
+     -->
 </beans>

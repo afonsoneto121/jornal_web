@@ -78,4 +78,12 @@ public class LoginController {
 		session.invalidate();
 		return "redirect:paginaPrincipal";
 	}
+	
+	@RequestMapping("/recuperarSenha")
+	public String recuperarSenha(){
+		
+		return "usuario/recuperar_senha";
+	}
+
+	
 }

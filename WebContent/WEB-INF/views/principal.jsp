@@ -2,10 +2,11 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <meta charset="Content-Type: text/html; charset=UTF-8">
+	
 <title>Inicio</title>
 </head>
 <body>
@@ -15,6 +16,9 @@
 	<a href="areaDoJornalista?id=${usuario_logado.nomePapel}">Area do Jornalista</a>  
 	<a href="loginFormulario"> Efetuar Login</a>
 	<a href="listarClassificados"> Classificados</a>
+	<a href="pefilUsuario?id=${usuario_logado.idUsuario}"> Perfil</a> <br />
+	<a href="cadastrarUsuarioFormulario"> Cadastrar Usuario</a>
+	
 	<br /> <br /> <br />
 	
 <table border="1">

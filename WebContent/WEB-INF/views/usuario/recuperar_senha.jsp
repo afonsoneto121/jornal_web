@@ -4,13 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Area do Jornalista</title>
+<title>Recuperar Senha</title>
 </head>
 <body>
-	<a href="paginaPrincipal"> Pagina Principal</a> <br />
-
-	<a href="cadastrarNoticiaFormulario">Cadastrar noticia</a>
-	<a href="listarNoticiaJornalista?id=${usuario_logado.login}">Apagar Noticia</a>
+ 
+ <form action="enviarEmail" method="post">
+ 	Login: <input type="text" name="login"  required="required"/> <br/>
+ 	<input type="submit" value="Enviar" />
+ </form>
  
 </body>
 </html>

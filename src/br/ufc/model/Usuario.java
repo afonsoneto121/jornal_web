@@ -16,6 +16,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.Cascade;
+
 @Entity(name = "usuario")
 public class Usuario {
 	@Id
@@ -40,13 +42,18 @@ public class Usuario {
 	private List<Papel> papel;
 	
 	
-	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, targetEntity = Noticia.class)
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true,
+			targetEntity = Noticia.class,fetch=FetchType.LAZY)
+	@org.hibernate.annotations.Cascade(value = org.hibernate.annotations.CascadeType.ALL)
 	List<Noticia> noticias;
 	
-	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, targetEntity = Comentario.class)
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true, 
+			targetEntity = Comentario.class,fetch=FetchType.LAZY)
 	List<Comentario> comentarios;
 	
-	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, targetEntity = Classificado.class)
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true, 
+			targetEntity = Classificado.class,fetch=FetchType.LAZY)
+
 	List<Classificado> classificados;
 
 	public Long getIdUsuario() {

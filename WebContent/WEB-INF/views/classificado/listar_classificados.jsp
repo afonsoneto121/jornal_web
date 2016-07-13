@@ -29,7 +29,7 @@
 		<td> ${n.preco} </td>
 		<td> ${n.telefone} </td>
 		<td> ${n.usuario.nome} </td>
-		<c:if test="${c.vendido == 1}">			
+		<c:if test="${n.vendido == 1}">			
 			<td> O produto foi vendido </td>			
 		</c:if>
 		<c:if test="${n.vendido == 0}">			

@@ -4,13 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Area do Jornalista</title>
+<title>Pagina de Erro </title>
 </head>
 <body>
-	<a href="paginaPrincipal"> Pagina Principal</a> <br />
-
-	<a href="cadastrarNoticiaFormulario">Cadastrar noticia</a>
-	<a href="listarNoticiaJornalista?id=${usuario_logado.login}">Apagar Noticia</a>
- 
+	<h1>Ocorreu algum erro no Sistema</h1> <br />
+	<h2>Por favor entre em contato com o Administrador</h2>
 </body>
 </html>

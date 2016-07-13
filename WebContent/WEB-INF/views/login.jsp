@@ -19,5 +19,6 @@
 				</select>
 		<input type="submit" value="ENVIAR" /> 
 	</form>
+	<a href="recuperarSenha"> Esqueci minha senha</a>
 </body>
 </html>
